@@ -1,6 +1,4 @@
-# Notes
-
-## Numpy
+# Numpy
 
 [Notes of content (link)](http://www.scipy-lectures.org/intro/numpy/index.html)
 
