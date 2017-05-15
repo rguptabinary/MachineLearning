@@ -37,7 +37,19 @@ a = np.ones((3, 3))
 
 a = np.eye(5) # Identity matrix
 
-a = np.diag([1, 2, 3, 4, 5])
-```
+a = np.diag([1, 2, 3, 4, 5]) # Diagonal matrix
 
-![Image of Yaktocat](https://www.rocq.inria.fr/modulef/Doc/GB/Guide5-14/img20.gif)
+# Random array
+a = np.random.rand(size) # Uniform in [0,1]
+
+a = np.random.randn(size) # Gaussian distribution
+
+a = np.empty(shape) # faster than np.zero as it doesn't initialize each values to zero, left for user.
+
+# Seeding, so that it produce same random numbers, useful for debugging
+np.random.seed(123)
+```
+[Identity matrix](https://en.wikipedia.org/wiki/Identity_matrix)
+
+[Diagonal matrix](https://en.wikipedia.org/wiki/Diagonal_matrix)
+
