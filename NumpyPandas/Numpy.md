@@ -122,36 +122,106 @@ Numerical operations on numpy arrays
 
 1. Elementwise operations
 
+    All arithmetic operations are elementwise.
     ```Python
+    # Elementwise operations
+    a = np.arrange(5) # [0, 1, 2, 3, 4]
 
+    a +=1 # [1, 2, 3, 4, 5]
+
+    a = a**2 # [1, 4, 9, 25]
+
+    # Comparing two arrays
+    a == b # Generates a boolean mask
+
+    np.array_equal(a, b)
+
+    # Matrix multiplication
+    a.dot(b)
+
+    # Logical operations, returns boolean mask
+    np.logical_or(a, b)
+
+    np.logical_and(a, b)
+
+    # Transpose of a matrix
+    b = a.T
     ```
 
 2. Reductions
 
     ```Python
+    # axis = 0: row, axis = 1: column, think of sum as projection of other axis sollapsed on the specified axis
+    a.sum(axis=0)
 
+    # Extrema, axis can be provided
+    a.max()
+    a.min()
+    a.argmax() # index of maximum element
+    a.argmin() # index of minimum element
+
+    # Logical operations
+    np.all(a > 3) # Check conditions on all elements, return true if all are true
+    
+    np.any(a < 5)
+    
+    ((a <= b) & (b <= c)).all()
+    
+    # Statistics
+    np.mean(a)
+
+    np.median(a, axis = -1) # last axis from all available axis
+
+    a.std() # Standard deviation
     ```
 
 3. Broadcasting
 
-    ```Python
+    All the arithmetic operations in numpy are elementwise. Though it can be done on array of different size if these arrays are transformable using numpy broadcasting.
 
+    ![example](http://www.scipy-lectures.org/_images/numpy_broadcasting.png)
+    A lot of grid-based or network-based problems can also use broadcasting. For instance, if we want to compute the distance from the origin of points on a 10x10 grid, we can do below
+    ```Python
+    x, y = np.arange(5), np.arange(5)[:, np.newaxis]
+
+    distance = np.sqrt(x ** 2 + y ** 2)
     ```
 
-4. Elementwise operations
+4. Shape manipulation
 
     ```Python
+    # Flattening
+    # Last dimension ravels out first
+    a = np.array([[1, 2, 3], [4, 5, 6]])
+    a.ravel()
+    # array([1, 2, 3, 4, 5, 6])
+    a.T.ravel()
+    # array([1, 4, 2, 5, 3, 6])
 
+    # Reshaping, it may return copy or view
+    a.reshape((2, -1))    # unspecified (-1) value is inferred
+
+    # Adding a dimension
+    a[:, np.newaxis]
+
+    # Resizing
+    # size of a np array can be changed with resize, 
+    # ***however it shouldn't be refrenced anywhere
+    a = np.arange(4)
+    a.resize((8,))
+    a
+    #array([0, 1, 2, 3, 0, 0, 0, 0])
     ```
 
-5. Shape manipulation
+5. Sorting
 
     ```Python
+    # Inplace sort
+    a.sort(axis=1)
 
-    ```
+    np.argsort() #indexes of elements in sorted order
 
-6. Sorting
+    np.argmax() # Index of maximum element
 
-    ```Python
-
+    np.argmin() # Index of minimum element
     ```
