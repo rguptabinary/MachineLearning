@@ -21,6 +21,8 @@ We need a model which is complex enough to find patterns in the data but general
 ### Parametric regression
 It's a way of building a model based on parameters. After traing we can use this equation, put our input and get the predictions. No nedd to store all the training values. But we have to retrain our model every time some new data is added to dataset. Training is slow but predictions are fast. Useful when we are able to see some mathematical relationship between input and output.
 
-### K nearest neighbours
+### K nearest neighbours (Instance based)
+In this method we identify k nearest points (x) of a given point and use the mean of their y values. One advantage is training is fast but we have to store all the data. It fits the data very well.
 
-### Kernel regression
+### Kernel regression (Instance based)
+In this instead of taking mean of k nearest neighbour we wait the contribution of each points based on how distant they are.
